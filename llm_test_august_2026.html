@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Проверка моделей в нестандартных условиях — результаты</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0b0d12;
+  --panel:#121620;
+  --panel2:#171c27;
+  --text:#e9edf5;
+  --muted:#9aa6b7;
+  --line:#293142;
+  --accent:#8bb9ff;
+  --accent2:#b7d0ff;
+  --good:#9fd3ad;
+  --warn:#e6c06a;
+  --bad:#e49a9a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#0a0c11,#0e1118);
+  color:var(--text);
+  font:16px/1.58 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+main{max-width:1180px;margin:auto;padding:42px 22px 80px}
+.hero,.section{
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:rgba(18,22,32,.96);
+  box-shadow:0 18px 60px rgba(0,0,0,.22)
+}
+.hero{padding:34px}
+.section{padding:28px;margin-top:24px}
+.eyebrow,.kicker{
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--accent);
+  font-weight:800
+}
+h1{
+  font-size:clamp(34px,5vw,58px);
+  line-height:1.05;
+  margin:10px 0 14px;
+  letter-spacing:-.035em
+}
+h2{font-size:28px;line-height:1.15;margin:4px 0 18px}
+p{margin:0 0 14px}
+.subtitle,.note{color:var(--muted)}
+.lead{font-size:18px;max-width:920px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:18px
+}
+.card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px;
+  background:var(--panel2)
+}
+.card h3{margin:0 0 8px;font-size:18px}
+.card p{margin:0;color:var(--muted)}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:14px;
+  font-variant-numeric:tabular-nums
+}
+th,td{
+  padding:11px 12px;
+  border-bottom:1px solid var(--line);
+  text-align:right;
+  white-space:nowrap
+}
+th:first-child,td:first-child{text-align:left}
+thead th{
+  color:var(--accent2);
+  background:#11151e;
+  position:sticky;
+  top:0
+}
+tbody tr:hover{background:#151b26}
+.rank{font-weight:800;color:var(--accent2)}
+.score-strong{font-weight:800}
+.small{font-size:13px;color:var(--muted)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+.scroll table{margin:0;min-width:880px}
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 14px;
+  margin-top:12px;
+  color:var(--muted);
+  font-size:13px
+}
+.dot{
+  display:inline-block;
+  width:10px;height:10px;border-radius:50%;
+  margin-right:6px;vertical-align:middle
+}
+.s10{background:#234c31}
+.s8{background:#3e4a27}
+.s6{background:#57472a}
+.s4{background:#572e31}
+.heat-10{background:#173622}
+.heat-9{background:#1f3b28}
+.heat-8{background:#334028}
+.heat-7{background:#444126}
+.heat-6{background:#4a3927}
+.heat-5{background:#4a3030}
+.heat-4{background:#512c30}
+.heat-3{background:#59282e}
+.heat-2{background:#62242b}
+.heat-1{background:#6b2028}
+footer{text-align:center;color:var(--muted);padding-top:28px;font-size:13px}
+@media(max-width:760px){
+  main{padding:20px 12px 48px}
+  .hero,.section{padding:20px;border-radius:17px}
+  .grid{grid-template-columns:1fr}
+  h2{font-size:24px}
+}
+</style>
+</head>
+<body>
+<main>
+
+<section class="hero">
+  <div class="eyebrow">Проверка моделей в нестандартных условиях</div>
+  <h1>10 инженерных тестов</h1>
+  <p class="lead">
+    Практическое сравнение моделей по первому самостоятельному ответу: без подсказок,
+    исправлений и повторной попытки после критики.
+  </p>
+  <p class="subtitle">Две серии · 10 тестов · единая шкала 0–10</p>
+</section>
+
+<section class="section">
+  <div class="kicker">Направления</div>
+  <h2>Что проверяли тесты</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Серия 1</h3>
+      <p>
+        Диагностическая дисциплина, наблюдаемость, причинная локализация,
+        атомарность публикации состояния, конкурентные обновления,
+        crash consistency и границы реализуемости.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Серия 2</h3>
+      <p>
+        Удержание инвариантов, epistemic discipline, distributed systems,
+        транзакционная конкурентность, security reasoning и согласованность
+        сложных наборов требований.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="kicker">Итог</div>
+  <h2>Рейтинг по 10 тестам</h2>
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Модель</th>
+          <th>Серия 1</th>
+          <th>Серия 2</th>
+          <th>Все 10</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="rank">1. Qwen 3.8 Max</td><td>7.7</td><td>9.6</td><td class="score-strong">8.65</td></tr>
+        <tr><td class="rank">2. Big Pickle</td><td>8.2</td><td>8.6</td><td class="score-strong">8.40</td></tr>
+        <tr><td class="rank">3. DeepSeek 4 Pro</td><td>7.4</td><td>9.1</td><td class="score-strong">8.25</td></tr>
+        <tr><td class="rank">4. Claude Code Sonnet 5 Medium</td><td>7.6</td><td>8.7</td><td class="score-strong">8.15</td></tr>
+        <tr><td class="rank">5. Kimi K3</td><td>7.0</td><td>9.1</td><td class="score-strong">8.05</td></tr>
+        <tr><td>6. Grok</td><td>6.8</td><td>8.0</td><td>7.40</td></tr>
+        <tr><td>7. Gemini 3.7 Flash</td><td>7.0</td><td>7.2</td><td>7.10</td></tr>
+        <tr><td>8. GLM 5.2</td><td>6.8</td><td>6.7</td><td>6.75</td></tr>
+        <tr><td>9. MiMo 2.5 Pro</td><td>5.0</td><td>5.9</td><td>5.45</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="kicker">Матрица</div>
+  <h2>Все оценки по тестам</h2>
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Модель</th>
+          <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+          <th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Qwen 3.8 Max</td>
+          <td class="heat-5">5.0</td><td class="heat-7">7.0</td><td class="heat-8">8.5</td><td class="heat-8">8.5</td><td class="heat-9">9.5</td>
+          <td class="heat-10">10.0</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-10">10.0</td><td class="heat-9">9.0</td>
+        </tr>
+        <tr>
+          <td>Big Pickle</td>
+          <td class="heat-8">8.0</td><td class="heat-8">8.5</td><td class="heat-8">8.0</td><td class="heat-8">8.0</td><td class="heat-8">8.5</td>
+          <td class="heat-10">10.0</td><td class="heat-8">8.5</td><td class="heat-9">9.5</td><td class="heat-9">9.0</td><td class="heat-6">6.0</td>
+        </tr>
+        <tr>
+          <td>DeepSeek 4 Pro</td>
+          <td class="heat-4">4.5</td><td class="heat-7">7.5</td><td class="heat-7">7.5</td><td class="heat-9">9.0</td><td class="heat-8">8.5</td>
+          <td class="heat-10">10.0</td><td class="heat-8">8.5</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-8">8.0</td>
+        </tr>
+        <tr>
+          <td>Claude Code Sonnet 5 Medium</td>
+          <td class="heat-7">7.0</td><td class="heat-8">8.0</td><td class="heat-8">8.0</td><td class="heat-7">7.5</td><td class="heat-7">7.5</td>
+          <td class="heat-10">10.0</td><td class="heat-9">9.0</td><td class="heat-8">8.5</td><td class="heat-10">10.0</td><td class="heat-6">6.0</td>
+        </tr>
+        <tr>
+          <td>Kimi K3</td>
+          <td class="heat-5">5.5</td><td class="heat-5">5.0</td><td class="heat-7">7.5</td><td class="heat-8">8.5</td><td class="heat-8">8.5</td>
+          <td class="heat-10">10.0</td><td class="heat-8">8.5</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-8">8.0</td>
+        </tr>
+        <tr>
+          <td>Grok</td>
+          <td class="heat-5">5.5</td><td class="heat-4">4.5</td><td class="heat-7">7.5</td><td class="heat-8">8.5</td><td class="heat-8">8.0</td>
+          <td class="heat-9">9.5</td><td class="heat-6">6.0</td><td class="heat-7">7.5</td><td class="heat-10">10.0</td><td class="heat-7">7.0</td>
+        </tr>
+        <tr>
+          <td>Gemini 3.7 Flash</td>
+          <td class="heat-7">7.5</td><td class="heat-5">5.5</td><td class="heat-7">7.0</td><td class="heat-9">9.0</td><td class="heat-6">6.0</td>
+          <td class="heat-3">3.5</td><td class="heat-9">9.0</td><td class="heat-9">9.5</td><td class="heat-9">9.0</td><td class="heat-5">5.0</td>
+        </tr>
+        <tr>
+          <td>GLM 5.2</td>
+          <td class="heat-7">7.5</td><td class="heat-5">5.5</td><td class="heat-8">8.0</td><td class="heat-7">7.5</td><td class="heat-5">5.5</td>
+          <td class="heat-3">3.0</td><td class="heat-6">6.0</td><td class="heat-9">9.0</td><td class="heat-9">9.0</td><td class="heat-6">6.5</td>
+        </tr>
+        <tr>
+          <td>MiMo 2.5 Pro</td>
+          <td class="heat-7">7.0</td><td class="heat-5">5.0</td><td class="heat-5">5.5</td><td class="heat-4">4.0</td><td class="heat-3">3.5</td>
+          <td class="heat-1">1.5</td><td class="heat-8">8.5</td><td class="heat-7">7.5</td><td class="heat-7">7.5</td><td class="heat-4">4.5</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="legend">
+    <span><span class="dot s10"></span>9–10: сильный результат</span>
+    <span><span class="dot s8"></span>7–8.5: рабочий уровень</span>
+    <span><span class="dot s6"></span>5–6.5: заметные проблемы</span>
+    <span><span class="dot s4"></span>&lt;5: провал теста</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="kicker">Сводка</div>
+  <h2>Изменение результата между сериями</h2>
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Модель</th>
+          <th>Серия 1</th>
+          <th>Серия 2</th>
+          <th>Δ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Kimi K3</td><td>7.0</td><td>9.1</td><td class="score-strong">+2.1</td></tr>
+        <tr><td>DeepSeek 4 Pro</td><td>7.4</td><td>9.1</td><td class="score-strong">+1.7</td></tr>
+        <tr><td>Grok</td><td>6.8</td><td>8.0</td><td>+1.2</td></tr>
+        <tr><td>Qwen 3.8 Max</td><td>7.7</td><td>9.6</td><td>+1.9</td></tr>
+        <tr><td>Claude Code Sonnet 5 Medium</td><td>7.6</td><td>8.7</td><td>+1.1</td></tr>
+        <tr><td>Big Pickle</td><td>8.2</td><td>8.6</td><td>+0.4</td></tr>
+        <tr><td>Gemini 3.7 Flash</td><td>7.0</td><td>7.2</td><td>+0.2</td></tr>
+        <tr><td>MiMo 2.5 Pro</td><td>5.0</td><td>5.9</td><td>+0.9</td></tr>
+        <tr><td>GLM 5.2</td><td>6.8</td><td>6.7</td><td>-0.1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>Проверка моделей в нестандартных условиях · 2026</footer>
+
+</main>
+</body>
+</html>
