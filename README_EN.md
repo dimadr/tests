@@ -1,12 +1,12 @@
 <div align="center">
 
-# LLM Engineering Tests — August 2026
+# LLM Engineering Tests — 2026
 
 ### Testing models under non-standard engineering conditions
 
-**10 tests · 10 models · first independent answer · no hints or retries**
+**August: 10 tests · September: 5 tests · First independent answer · No hints or second attempts**
 
-[Open the results](https://dimadr.github.io/tests/llm_test_august_2026.html)
+[September 2026 — Series 3](https://dimadr.github.io/tests/llm_test_september_2026.html) · [August 2026 — Series 1–2](https://dimadr.github.io/tests/llm_test_august_2026.html)
 
 </div>
 
@@ -29,15 +29,62 @@ What matters more in these tasks is the ability to:
 - avoid inventing a defect merely because the prompt asks to find one;
 - re-check the original requirements after producing a solution.
 
-The complete scores and the matrix for all ten tests are published separately:
-
-**https://dimadr.github.io/tests/llm_test_august_2026.html**
+Full rankings and per-test score matrices are available in the [September Series 3 results](https://dimadr.github.io/tests/llm_test_september_2026.html) and the [August Series 1–2 archive](https://dimadr.github.io/tests/llm_test_august_2026.html).
 
 ---
 
-## Results
+## September 2026 · Series 3 (closed)
 
-By average answer quality across all ten tests, **Qwen 3.8 Max ranked first with 8.65/10**.
+**5 independent engineering tests · 10 models completed the series · one additional model was unable to run one test due to a product-level restriction.** Results are based on first independent answers; post-feedback revisions were not scored.
+
+[**View the complete September report and S3-1…S3-5 score matrix**](https://dimadr.github.io/tests/llm_test_september_2026.html)
+
+### September leaderboard
+
+Only models with results for all five tests are included in the formal ranking.
+
+| Rank | Model | Average / 10 |
+|---:|---|---:|
+| 1 | Gemini 4 | **9.30** |
+| 2 | GLM 5.3 DeepThink Max | 9.20 |
+| 3 | Qwen 3.8 | 9.10 |
+| 4 | Claude Code Sonnet 5 High | 8.90 |
+| 5 | Kimi K3 | 8.60 |
+| 6 | Gemini 3.8 Flash | 8.50 |
+| 7 | DeepSeek V4 Pro | 8.10 |
+| 8 | Big Pickle | 7.20 |
+| 9 | MiMo 2.5 Pro | 7.00 |
+| 10 | GigaChat | 5.80 |
+
+**GPT 6.0 Astra High — 9.88 across four available tests (S3-1: 9.5; S3-2: 10.0; S3-3: BLOCKED; S3-4: 10.0; S3-5: 10.0).** The S3-3 task was blocked by the product's Trusted Access requirement. This is neither a score of zero nor a model refusal. The four-test average is not directly comparable to the complete five-test leaderboard.
+
+### Five test areas
+
+- **S3-1 — systemd readiness:** actual `Requires=` / `After=` semantics, `Type=notify`, the `READY=1` commit point, timeouts and the startup readiness vs runtime health boundary.
+- **S3-2 — PostgreSQL and SMTP:** at-least-once brokers, crash windows, exactly-once and non-transactional external side effects.
+- **S3-3 — file-system security:** `lstat()` / `open()` TOCTOU, symlink races and binding checks to the opened file descriptor.
+- **S3-4 — PostgreSQL rolling migration:** expand–migrate–contract, overlapping v1/v2 writers, backfill and rollback windows.
+- **S3-5 — distributed leases:** Redis TTL, stale owners, fencing tokens and the exact limits of the guarantees they provide.
+
+The exact prompts remain unpublished to allow further independent testing without disclosing the control cases.
+
+### Practical observations
+
+**Gemini 4** ranked first among models that completed all five tasks: **9.30/10**, including two **10/10** scores. Its response speed was notably high in practice, but latency was not measured consistently and is not part of the ranking.
+
+**GLM 5.3 DeepThink Max (9.20), Qwen 3.8 (9.10) and Claude Code Sonnet 5 High (8.90)** formed the closest high-performing group. The final task was particularly discriminating: strong solutions had to preserve a protocol's safety claim under adverse event ordering, not merely name the right pattern.
+
+Results apply to specific model versions and selected reasoning modes. In particular, **Astra was tested at High**, not at the higher Very High or Ultra levels. Corrected answers after critique did not replace first-attempt scores. **Latency and cost are tracked separately from technical quality.**
+
+---
+
+## August 2026 · Series 1–2
+
+The August series comprised **10 tests across 11 models**. Its full analysis remains below, and the [original August HTML report](https://dimadr.github.io/tests/llm_test_august_2026.html) remains available as a separate archive.
+
+## Results — August 2026
+
+In August, by average answer quality across all ten tests, **Qwen 3.8 Max ranked first with 8.65/10**.
 
 Full ranking:
 
@@ -47,10 +94,11 @@ Full ranking:
 4. **DeepSeek 4 Pro — 8.25**
 5. **Claude Code Sonnet 5 Medium — 8.15**
 6. **Kimi K3 — 8.05**
-7. **Grok — 7.40**
-8. **Gemini 3.7 Flash — 7.10**
-9. **GLM 5.2 — 6.75**
-10. **MiMo 2.5 Pro — 5.45**
+7. **Gemini 3.8 Flash — 8.00**
+8. **Grok — 7.40**
+9. **Gemini 3.7 Flash — 7.10**
+10. **GLM 5.2 — 6.75**
+11. **MiMo 2.5 Pro — 5.45**
 
 But the average score turned out to be only part of the picture.
 
@@ -58,7 +106,7 @@ The models differed substantially in their **engineering reasoning profiles**: o
 
 ---
 
-## The cost of quality
+## The cost of quality — August 2026
 
 The formal ranking measures answer quality.  
 **Speed and cost were intentionally excluded from the overall score.**
@@ -103,7 +151,7 @@ GLM 5.2 remains in the comparison as a separately tested version and as a contro
 
 ---
 
-## Methodology
+## Evaluation methodology
 
 All models received the same original tasks.
 
@@ -112,7 +160,7 @@ Only the **first independent answer** counted:
 - no hints;
 - no corrective clarification;
 - no retry after critique;
-- the highest available reasoning mode offered by the respective service.
+- the reasoning mode recorded for each run (identified separately when several effort levels are available).
 
 A corrected answer after feedback did not replace the original score.
 
@@ -285,7 +333,7 @@ Many models found the contradiction more easily than they avoided creating a new
 
 ---
 
-## Two test series
+## Two August test series
 
 ### Series 1
 
@@ -339,7 +387,7 @@ This is not a universal hierarchy of LLMs.
 
 The results apply only to:
 
-- these ten tasks;
+- the tasks in each series (10 in August, 5 in September);
 - the tested model versions;
 - the selected reasoning modes;
 - the state of the services at the time of testing.
@@ -352,7 +400,10 @@ The purpose of the project is to expose differences in engineering reasoning and
 
 ## Links
 
-**Results**  
+**September 2026 — results**  
+https://dimadr.github.io/tests/llm_test_september_2026.html
+
+**August 2026 — archive**  
 https://dimadr.github.io/tests/llm_test_august_2026.html
 
 **Repository**  
@@ -362,6 +413,6 @@ https://github.com/dimadr/tests
 
 <div align="center">
 
-August 2026
+August–September 2026
 
 </div>
