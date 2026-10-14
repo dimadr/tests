@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Проверка моделей в нестандартных условиях — результаты</title>
+<meta name="description" content="Сентябрь 2026: третья серия инженерных тестов LLM. Пять задач, десять завершивших тестирование моделей, таблица оценок и методика.">
+<title>LLM Engineering Tests — Сентябрь 2026 · Серия №3</title>
 <style>
 :root{
   color-scheme:dark;
@@ -126,185 +127,125 @@ footer{text-align:center;color:var(--muted);padding-top:28px;font-size:13px}
   .grid{grid-template-columns:1fr}
   h2{font-size:24px}
 }
+
+/* Доработки сентябрьского отчёта: сохраняют оформление предыдущей серии. */
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{color:var(--accent2)}
+.meta{color:var(--muted);font-size:14px}
+.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+.stat{border:1px solid var(--line);border-radius:16px;background:var(--panel2);padding:17px 18px}
+.stat .number{display:block;color:var(--accent2);font-size:34px;font-weight:800;line-height:1.1;margin:7px 0 5px;font-variant-numeric:tabular-nums}
+.stat .meta{font-size:13px}
+.stat .who{font-weight:600}
+.model-name{text-align:left;white-space:normal;min-width:190px}
+.place{color:var(--accent2);font-weight:800}
+.blocked{color:var(--warn);font-weight:800}
+.table-note{margin:15px 2px 0;color:var(--muted);font-size:14px}
+.inline-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card h3{font-size:17px}
+.section .closing{color:var(--accent2);font-weight:700}
+.matrix{min-width:860px}
+.matrix th,.matrix td{text-align:center}
+.matrix th:first-child,.matrix td:first-child{text-align:left}
+.ranking{min-width:560px}
+.ranking th,.ranking td{text-align:center}
+.ranking th:first-child,.ranking td:first-child{text-align:left}
+@media(max-width:760px){.summary,.grid.cols-3{grid-template-columns:1fr}.model-name{min-width:155px}.stat .number{font-size:30px}}
 </style>
 </head>
 <body>
 <main>
-
 <section class="hero">
-  <div class="eyebrow">Проверка моделей в нестандартных условиях</div>
-  <h1>10 инженерных тестов</h1>
-  <p class="lead">
-    Практическое сравнение моделей по первому самостоятельному ответу: без подсказок,
-    исправлений и повторной попытки после критики.
-  </p>
-  <p class="subtitle">Две серии · 10 тестов · единая шкала 0–10</p>
+ <div class="eyebrow">Проверка моделей в нестандартных условиях · Сентябрь 2026</div>
+ <h1>Пять инженерных тестов</h1>
+ <p class="lead">Серия №3. Практическое сравнение по первому самостоятельному ответу — без подсказок, исправлений и второй попытки после критики.</p>
+ <p class="subtitle">10 полных результатов · 1 частичный результат · шкала 0–10 · серия закрыта 14 октября 2026 года</p>
+ <p class="meta"><a href="llm_test_august_2026.html">Август 2026: предыдущие 10 тестов</a> · <a href="https://github.com/dimadr/tests">Репозиторий проекта</a></p>
+ <div class="summary">
+  <div class="stat"><span class="meta">Лидер полной серии</span><strong class="number">9.30</strong><span class="who">Gemini 4</span></div>
+  <div class="stat"><span class="meta">Лучший частичный результат</span><strong class="number">9.88*</strong><span class="who">GPT 6.0 Astra High</span></div>
+  <div class="stat"><span class="meta">Завершили все пять заданий</span><strong class="number">10</strong><span class="who">моделей</span></div>
+ </div>
 </section>
 
 <section class="section">
-  <div class="kicker">Направления</div>
-  <h2>Что проверяли тесты</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Серия 1</h3>
-      <p>
-        Диагностическая дисциплина, наблюдаемость, причинная локализация,
-        атомарность публикации состояния, конкурентные обновления,
-        crash consistency и границы реализуемости.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Серия 2</h3>
-      <p>
-        Удержание инвариантов, epistemic discipline, distributed systems,
-        транзакционная конкурентность, security reasoning и согласованность
-        сложных наборов требований.
-      </p>
-    </div>
-  </div>
+ <div class="kicker">Итоги</div>
+ <h2>Рейтинг по пяти тестам</h2>
+ <p class="note">Места присваиваются только моделям, прошедшим все пять испытаний. Итоговый балл — среднее арифметическое S3-1…S3-5. Скорость и стоимость в него не входят.</p>
+ <div class="scroll"><table class="ranking" aria-label="Рейтинг моделей за сентябрь 2026">
+  <thead><tr><th>Модель</th><th>Средний балл</th><th>Оценок 10/10</th></tr></thead>
+  <tbody>
+<tr><td class="model-name"><span class="place">1</span> Gemini 4</td><td class="score-strong">9.30</td><td>2</td></tr>
+<tr><td class="model-name"><span class="place">2</span> GLM 5.3 DeepThink Max</td><td class="score-strong">9.20</td><td>1</td></tr>
+<tr><td class="model-name"><span class="place">3</span> Qwen 3.8</td><td class="score-strong">9.10</td><td>0</td></tr>
+<tr><td class="model-name"><span class="place">4</span> Claude Code Sonnet 5 High</td><td class="score-strong">8.90</td><td>0</td></tr>
+<tr><td class="model-name"><span class="place">5</span> Kimi K3</td><td class="score-strong">8.60</td><td>0</td></tr>
+<tr><td class="model-name"><span class="place">6</span> Gemini 3.8 Flash</td><td class="score-strong">8.50</td><td>0</td></tr>
+<tr><td class="model-name"><span class="place">7</span> DeepSeek V4 Pro</td><td class="score-strong">8.10</td><td>0</td></tr>
+<tr><td class="model-name"><span class="place">8</span> Big Pickle</td><td class="score-strong">7.20</td><td>0</td></tr>
+<tr><td class="model-name"><span class="place">9</span> MiMo 2.5 Pro</td><td class="score-strong">7.00</td><td>0</td></tr>
+<tr><td class="model-name"><span class="place">10</span> GigaChat</td><td class="score-strong">5.80</td><td>0</td></tr>
+  </tbody>
+ </table></div>
 </section>
 
 <section class="section">
-  <div class="kicker">Итог</div>
-  <h2>Рейтинг по 10 тестам</h2>
-  <div class="scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>Модель</th>
-          <th>Серия 1</th>
-          <th>Серия 2</th>
-          <th>Все 10</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="rank">1. Qwen 3.8 Max</td><td>7.7</td><td>9.6</td><td class="score-strong">8.65</td></tr>
-        <tr><td class="rank">2. GLM 5.3 DeepThink Max</td><td>7.9</td><td>9.1</td><td class="score-strong">8.50</td></tr>
-        <tr><td class="rank">3. Big Pickle</td><td>8.2</td><td>8.6</td><td class="score-strong">8.40</td></tr>
-        <tr><td class="rank">4. DeepSeek 4 Pro</td><td>7.4</td><td>9.1</td><td class="score-strong">8.25</td></tr>
-        <tr><td class="rank">5. Claude Code Sonnet 5 Medium</td><td>7.6</td><td>8.7</td><td class="score-strong">8.15</td></tr>
-        <tr><td class="rank">6. Kimi K3</td><td>7.0</td><td>9.1</td><td class="score-strong">8.05</td></tr>
-        <tr><td class="rank">7. Gemini 3.8 Flash</td><td>7.9</td><td>8.1</td><td class="score-strong">8.00</td></tr>
-        <tr><td>8. Grok</td><td>6.8</td><td>8.0</td><td>7.40</td></tr>
-        <tr><td>9. Gemini 3.7 Flash</td><td>7.0</td><td>7.2</td><td>7.10</td></tr>
-        <tr><td>10. GLM 5.2</td><td>6.8</td><td>6.7</td><td>6.75</td></tr>
-        <tr><td>11. MiMo 2.5 Pro</td><td>5.0</td><td>5.9</td><td>5.45</td></tr>
-      </tbody>
-    </table>
-  </div>
+ <div class="kicker">Матрица</div>
+ <h2>Все оценки · S3-1—S3-5</h2>
+ <div class="scroll"><table class="matrix" aria-label="Оценки участников по пяти тестам">
+  <thead><tr><th>Модель</th><th>S3-1</th><th>S3-2</th><th>S3-3</th><th>S3-4</th><th>S3-5</th><th>Среднее</th></tr></thead>
+  <tbody>
+<tr><td class="model-name">Gemini 4</td><td class="heat-9">9.0</td><td class="heat-9">9.0</td><td class="heat-10">10.0</td><td class="heat-10">10.0</td><td class="heat-8">8.5</td><td class="score-strong">9.30</td></tr>
+<tr><td class="model-name">GLM 5.3 DeepThink Max</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-10">10.0</td><td class="heat-7">7.5</td><td class="score-strong">9.20</td></tr>
+<tr><td class="model-name">Qwen 3.8</td><td class="heat-8">8.5</td><td class="heat-9">9.0</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-9">9.0</td><td class="score-strong">9.10</td></tr>
+<tr><td class="model-name">Claude Code Sonnet 5 High</td><td class="heat-9">9.0</td><td class="heat-9">9.0</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-7">7.5</td><td class="score-strong">8.90</td></tr>
+<tr><td class="model-name">Kimi K3</td><td class="heat-8">8.5</td><td class="heat-9">9.0</td><td class="heat-9">9.5</td><td class="heat-9">9.0</td><td class="heat-7">7.0</td><td class="score-strong">8.60</td></tr>
+<tr><td class="model-name">Gemini 3.8 Flash</td><td class="heat-8">8.5</td><td class="heat-8">8.5</td><td class="heat-9">9.0</td><td class="heat-9">9.0</td><td class="heat-7">7.5</td><td class="score-strong">8.50</td></tr>
+<tr><td class="model-name">DeepSeek V4 Pro</td><td class="heat-8">8.5</td><td class="heat-9">9.0</td><td class="heat-8">8.5</td><td class="heat-8">8.5</td><td class="heat-6">6.0</td><td class="score-strong">8.10</td></tr>
+<tr><td class="model-name">Big Pickle</td><td class="heat-6">6.5</td><td class="heat-8">8.5</td><td class="heat-9">9.0</td><td class="heat-4">4.0</td><td class="heat-8">8.0</td><td class="score-strong">7.20</td></tr>
+<tr><td class="model-name">MiMo 2.5 Pro</td><td class="heat-6">6.0</td><td class="heat-8">8.5</td><td class="heat-9">9.0</td><td class="heat-4">4.0</td><td class="heat-7">7.5</td><td class="score-strong">7.00</td></tr>
+<tr><td class="model-name">GigaChat</td><td class="heat-6">6.0</td><td class="heat-5">5.5</td><td class="heat-7">7.0</td><td class="heat-4">4.0</td><td class="heat-6">6.5</td><td class="score-strong">5.80</td></tr>
+   <tr><td class="model-name">GPT 6.0 Astra High*</td><td class="heat-9">9.5</td><td class="heat-10">10.0</td><td class="blocked" title="Запрос заблокирован продуктом; ответ не оценивался">BLOCKED</td><td class="heat-10">10.0</td><td class="heat-10">10.0</td><td class="blocked">9.88*</td></tr>
+  </tbody>
+ </table></div>
+ <p class="table-note"><strong>* GPT 6.0 Astra High:</strong> 9.88 рассчитано по четырём доступным заданиям (9.5, 10.0, BLOCKED, 10.0, 10.0). S3-3 не был выполнен из-за ограничения Trusted Access. Это не нулевая оценка и не отказ самой модели; частичный результат не включён в рейтинг пяти тестов.</p>
+ <div class="legend"><span><span class="dot s10"></span>9–10: сильный результат</span><span><span class="dot s8"></span>7–8.5: рабочий уровень</span><span><span class="dot s6"></span>5–6.5: заметные ошибки</span><span><span class="dot s4"></span>ниже 5: серьёзный дефект</span></div>
 </section>
 
 <section class="section">
-  <div class="kicker">Матрица</div>
-  <h2>Все оценки по тестам</h2>
-  <div class="scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>Модель</th>
-          <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-          <th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Qwen 3.8 Max</td>
-          <td class="heat-5">5.0</td><td class="heat-7">7.0</td><td class="heat-8">8.5</td><td class="heat-8">8.5</td><td class="heat-9">9.5</td>
-          <td class="heat-10">10.0</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-10">10.0</td><td class="heat-9">9.0</td>
-        </tr>
-        <tr>
-          <td>GLM 5.3 DeepThink Max</td>
-          <td class="heat-8">8.0</td><td class="heat-5">5.5</td><td class="heat-8">8.5</td><td class="heat-8">8.5</td><td class="heat-9">9.0</td>
-          <td class="heat-10">10.0</td><td class="heat-8">8.5</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-8">8.0</td>
-        </tr>
-        <tr>
-          <td>Big Pickle</td>
-          <td class="heat-8">8.0</td><td class="heat-8">8.5</td><td class="heat-8">8.0</td><td class="heat-8">8.0</td><td class="heat-8">8.5</td>
-          <td class="heat-10">10.0</td><td class="heat-8">8.5</td><td class="heat-9">9.5</td><td class="heat-9">9.0</td><td class="heat-6">6.0</td>
-        </tr>
-        <tr>
-          <td>DeepSeek 4 Pro</td>
-          <td class="heat-4">4.5</td><td class="heat-7">7.5</td><td class="heat-7">7.5</td><td class="heat-9">9.0</td><td class="heat-8">8.5</td>
-          <td class="heat-10">10.0</td><td class="heat-8">8.5</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-8">8.0</td>
-        </tr>
-        <tr>
-          <td>Claude Code Sonnet 5 Medium</td>
-          <td class="heat-7">7.0</td><td class="heat-8">8.0</td><td class="heat-8">8.0</td><td class="heat-7">7.5</td><td class="heat-7">7.5</td>
-          <td class="heat-10">10.0</td><td class="heat-9">9.0</td><td class="heat-8">8.5</td><td class="heat-10">10.0</td><td class="heat-6">6.0</td>
-        </tr>
-        <tr>
-          <td>Kimi K3</td>
-          <td class="heat-5">5.5</td><td class="heat-5">5.0</td><td class="heat-7">7.5</td><td class="heat-8">8.5</td><td class="heat-8">8.5</td>
-          <td class="heat-10">10.0</td><td class="heat-8">8.5</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-8">8.0</td>
-        </tr>
-        <tr>
-          <td>Gemini 3.8 Flash</td>
-          <td class="heat-7">7.0</td><td class="heat-5">5.5</td><td class="heat-8">8.0</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td>
-          <td class="heat-8">8.0</td><td class="heat-7">7.0</td><td class="heat-9">9.5</td><td class="heat-9">9.5</td><td class="heat-6">6.5</td>
-        </tr>
-        <tr>
-          <td>Grok</td>
-          <td class="heat-5">5.5</td><td class="heat-4">4.5</td><td class="heat-7">7.5</td><td class="heat-8">8.5</td><td class="heat-8">8.0</td>
-          <td class="heat-9">9.5</td><td class="heat-6">6.0</td><td class="heat-7">7.5</td><td class="heat-10">10.0</td><td class="heat-7">7.0</td>
-        </tr>
-        <tr>
-          <td>Gemini 3.7 Flash</td>
-          <td class="heat-7">7.5</td><td class="heat-5">5.5</td><td class="heat-7">7.0</td><td class="heat-9">9.0</td><td class="heat-6">6.0</td>
-          <td class="heat-3">3.5</td><td class="heat-9">9.0</td><td class="heat-9">9.5</td><td class="heat-9">9.0</td><td class="heat-5">5.0</td>
-        </tr>
-        <tr>
-          <td>GLM 5.2</td>
-          <td class="heat-7">7.5</td><td class="heat-5">5.5</td><td class="heat-8">8.0</td><td class="heat-7">7.5</td><td class="heat-5">5.5</td>
-          <td class="heat-3">3.0</td><td class="heat-6">6.0</td><td class="heat-9">9.0</td><td class="heat-9">9.0</td><td class="heat-6">6.5</td>
-        </tr>
-        <tr>
-          <td>MiMo 2.5 Pro</td>
-          <td class="heat-7">7.0</td><td class="heat-5">5.0</td><td class="heat-5">5.5</td><td class="heat-4">4.0</td><td class="heat-3">3.5</td>
-          <td class="heat-1">1.5</td><td class="heat-8">8.5</td><td class="heat-7">7.5</td><td class="heat-7">7.5</td><td class="heat-4">4.5</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="legend">
-    <span><span class="dot s10"></span>9–10: сильный результат</span>
-    <span><span class="dot s8"></span>7–8.5: рабочий уровень</span>
-    <span><span class="dot s6"></span>5–6.5: заметные проблемы</span>
-    <span><span class="dot s4"></span>&lt;5: провал теста</span>
-  </div>
+ <div class="kicker">Программа</div>
+ <h2>Что проверяла серия №3</h2>
+ <p class="note">Ниже перечислены направления, а не полные тексты заданий и эталонные решения.</p>
+ <div class="grid">
+  <div class="card"><h3>S3-1 · systemd readiness</h3><p>Семантика <code>After=</code> и <code>Requires=</code>; граница готовности сервиса; поведение зависимых юнитов при зависании и перезапуске.</p></div>
+  <div class="card"><h3>S3-2 · Queue, PostgreSQL, SMTP</h3><p>Crash interleaving при доставке at-least-once; локальный commit и внешний побочный эффект; пределы гарантии exactly-once.</p></div>
+  <div class="card"><h3>S3-3 · Привилегированная публикация файлов</h3><p>TOCTOU, symlink race и точная семантика Linux/Python API; проверка открытого файлового дескриптора.</p></div>
+  <div class="card"><h3>S3-4 · PostgreSQL rolling migration</h3><p>Совместимость v1/v2, двусторонние обновления, expand–migrate–contract, backfill и rollback-window без потери изменений.</p></div>
+  <div class="card"><h3>S3-5 · Redis lease и fencing</h3><p>Пауза старого владельца, граница прав на внешний ресурс и атомарность проверки устаревших операций.</p></div>
+  <div class="card"><h3>Общий критерий</h3><p>Важнее не убедительное описание знакомого паттерна, а способность удержать требуемый инвариант при самом неудобном для решения сценарии.</p></div>
+ </div>
 </section>
 
 <section class="section">
-  <div class="kicker">Сводка</div>
-  <h2>Изменение результата между сериями</h2>
-  <div class="scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>Модель</th>
-          <th>Серия 1</th>
-          <th>Серия 2</th>
-          <th>Δ</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Kimi K3</td><td>7.0</td><td>9.1</td><td class="score-strong">+2.1</td></tr>
-        <tr><td>Gemini 3.8 Flash</td><td>7.9</td><td>8.1</td><td>+0.2</td></tr>
-        <tr><td>DeepSeek 4 Pro</td><td>7.4</td><td>9.1</td><td class="score-strong">+1.7</td></tr>
-        <tr><td>Grok</td><td>6.8</td><td>8.0</td><td>+1.2</td></tr>
-        <tr><td>Qwen 3.8 Max</td><td>7.7</td><td>9.6</td><td>+1.9</td></tr>
-        <tr><td>Claude Code Sonnet 5 Medium</td><td>7.6</td><td>8.7</td><td>+1.1</td></tr>
-        <tr><td>Big Pickle</td><td>8.2</td><td>8.6</td><td>+0.4</td></tr>
-        <tr><td>Gemini 3.7 Flash</td><td>7.0</td><td>7.2</td><td>+0.2</td></tr>
-        <tr><td>MiMo 2.5 Pro</td><td>5.0</td><td>5.9</td><td>+0.9</td></tr>
-        <tr><td>GLM 5.3 DeepThink Max</td><td>7.9</td><td>9.1</td><td class="score-strong">+1.2</td></tr>
-        <tr><td>GLM 5.2</td><td>6.8</td><td>6.7</td><td>-0.1</td></tr>
-      </tbody>
-    </table>
-  </div>
+ <div class="kicker">Наблюдения</div>
+ <h2>Что показал сентябрь</h2>
+ <div class="grid cols-3">
+  <div class="card"><h3>Gemini 4</h3><p>Первое место в полной серии: 9.30; максимальные оценки за файловую безопасность и rolling migration. Высокая скорость ответа отмечалась наблюдательно, без сопоставимого замера latency.</p></div>
+  <div class="card"><h3>Astra High</h3><p>По четырём доступным заданиям — 9.88, включая три оценки 10/10. Прямое сравнение этого среднего с полными результатами было бы некорректным.</p></div>
+  <div class="card"><h3>Разные профили ошибок</h3><p>Слабые ответы зачастую распознавали паттерн, но нарушали его собственным кодом или порядком операций. Сильные отличались точностью crash-модели и границ гарантий.</p></div>
+ </div>
 </section>
 
-<footer>Проверка моделей в нестандартных условиях · 2026</footer>
-
+<section class="section">
+ <div class="kicker">Методика</div>
+ <h2>Как интерпретировать оценки</h2>
+ <p>Каждому участнику предоставлялись одинаковые исходные условия задачи. Учитывался <strong>только первый независимый ответ</strong>; уточнения, исправления и критика не пересчитывали результат. Использовался максимально доступный режим reasoning в тестируемом интерфейсе, где он был предусмотрен.</p>
+ <p>10/10 означает технически корректное решение поставленной задачи, а не отсутствие любых мыслимых расширений или периферийных замечаний. Ошибки в коде, непосредственно нарушающие центральный инвариант, оценивались существенно строже стилистических и терминологических неточностей.</p>
+ <p>Результаты относятся к конкретным версиям, режимам и условиям тестирования, а не ко всем задачам или будущим версиям этих моделей. Блокировка продуктом не является технической оценкой ответа. Стоимость и latency отдельно в общий балл не включались.</p>
+ <p class="closing">Сентябрьская серия №3 закрыта. Следующие новые задания относятся к отдельной серии.</p>
+</section>
+<footer>Проверка моделей в нестандартных условиях · 2026 · <a href="llm_test_august_2026.html">Августовский архив</a> · <a href="https://github.com/dimadr/tests">GitHub</a></footer>
 </main>
 </body>
 </html>
