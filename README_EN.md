@@ -54,7 +54,7 @@ Full rankings and per-test score matrices are available for [October Series 4](S
 | 9 | Qwen 3.8 Max | 6.50 |
 | 10 | Big Pickle | 6.10 |
 
-**Not tested:** Claude Opus 5.5 (paid access required) and Grok 4.7 Expert (access restrictions prevented participation). An unavailable result is **not a zero**. Luna's second supplied review was included, although the review text itself did not explicitly establish Gemini 4 Argon High as its author.
+**Not tested:** Claude Opus 5.5 (paid access required) and Grok 4.7 Expert (access restrictions prevented participation). An unavailable result is **not a zero**. 
 
 ### Five task areas
 
