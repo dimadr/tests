@@ -2,11 +2,11 @@
 
 # LLM Engineering Tests — 2026
 
-### Testing models under non-standard engineering conditions
+### Testing models under non-standard engineering and practical conditions
 
-**August: 10 tests · September: 5 tests · First independent answer · No hints or second attempts**
+**August: 10 tests · September: 5 tests · October: 5 tests · First independent answer · No hints or retakes**
 
-[September 2026 — Series 3](https://dimadr.github.io/tests/llm_test_september_2026.html) · [August 2026 — Series 1–2](https://dimadr.github.io/tests/llm_test_august_2026.html)
+[October 2026 — Series 4](S4_итоги_октябрь_2026.html) · [September 2026 — Series 3](https://dimadr.github.io/tests/llm_test_september_2026.html) · [August 2026 — Series 1–2](https://dimadr.github.io/tests/llm_test_august_2026.html)
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## About the project
 
-This is not an attempt to create another universal benchmark or a ranking of the “best LLM overall”.
+This is not an attempt to create another universal benchmark or a ranking of the “best LLM overall”. The tests also cover practical task completion, not merely the quality of explanations.
 
 The goal is simpler and more practical: test several models on engineering tasks where recalling the right command, syntax, or standard pattern is not enough.
 
@@ -29,7 +29,54 @@ What matters more in these tasks is the ability to:
 - avoid inventing a defect merely because the prompt asks to find one;
 - re-check the original requirements after producing a solution.
 
-Full rankings and per-test score matrices are available in the [September Series 3 results](https://dimadr.github.io/tests/llm_test_september_2026.html) and the [August Series 1–2 archive](https://dimadr.github.io/tests/llm_test_august_2026.html).
+Full rankings and per-test score matrices are available for [October Series 4](S4_итоги_октябрь_2026.html), [September Series 3](https://dimadr.github.io/tests/llm_test_september_2026.html), and the [August Series 1–2 archive](https://dimadr.github.io/tests/llm_test_august_2026.html).
+
+---
+
+## October 2026 · Series 4 (S4)
+
+**5 tasks · 10 scored models.** Alongside engineering scenarios, Series 4 introduced two real-world tasks: navigation and analysis of a human conflict. The purpose is to identify useful model capabilities and limitations—not to pursue a perfectly complete benchmark at any cost.
+
+[**Open the October HTML report: every model, all five tasks, and individual judge scores**](S4_итоги_октябрь_2026.html)
+
+### October leaderboard
+
+| Rank | Model | Final / 10 |
+|---:|---|---:|
+| 1 | **Gemini 4 Argon High** | **9.00** |
+| 2 | GPT-6.1 Sol Ultra | **8.65** |
+| 3 | Kimi K3 | **8.62** |
+| 4 | GLM 5.3 DeepThink Max | 8.60 |
+| 5 | Claude Sonnet 5.5 High | 8.47 |
+| 6 | DeepSeek V4.1 Flash High | 8.23 |
+| 7 | MiMo 2.6 Pro | 8.12 |
+| 8 | GPT-6 Luna Pro | 7.53 |
+| 9 | Qwen 3.8 Max | 6.50 |
+| 10 | Big Pickle | 6.10 |
+
+**Not tested:** Claude Opus 5.5 (paid access required) and Grok 4.7 Expert (access restrictions prevented participation). An unavailable result is **not a zero**. Luna's second supplied review was included, although the review text itself did not explicitly establish Gemini 4 Argon High as its author.
+
+### Five task areas
+
+- **S4-1 — IPv6 / PMTU:** diagnosing stalled large TCP transfers, checking traffic direction, separating hypotheses, and applying a safe mitigation without speculative server changes.
+- **S4-2 — PostgreSQL / transfers:** concurrent debits under `READ COMMITTED`, balance conservation, `request_id` idempotency, and acknowledged-commit durability across failover.
+- **S4-3 — Redis / ACL:** caching document content without bypassing authorization, immediate revocation for new requests, and the limits of stopping bytes already in transit.
+- **S4-4 — Shenzhen / navigation:** locating a verifiable official electronics retailer and providing a usable walk from Meyo+ Hotel—not merely a plausible store description.
+- **S4-5 — help / autonomy:** separating facts from interpretations and motivations from outcomes, then judging a practical approach to a conflict between a daughter and her father.
+
+Exact prompts remain unpublished to preserve the usefulness of the control cases for future participants.
+
+### Scoring method and limitations
+
+GPT-6 and Gemini 4 Argon High supplied separately recorded expert assessments. For **S4-1–S4-3**, each task score is the mean of **two expert scores**, where both are available. For **S4-4–S4-5**, the organizer's **practical assessment** is added, normally yielding a mean of three judges. The exception is Gemini 4 Argon High itself: its self-assessment was not treated as an independent expert score; its tasks were scored by GPT-6 and, for S4-4–S4-5, the organizer. Each model's overall score is the mean of five task scores, followed by any separately agreed penalty.
+
+The organizer **did not personally score the three technical tasks**. Two expert judgments must not be confused with empirical validation of working systems. In the practical tasks, usefulness and task completion mattered: **Qwen and Big Pickle each received 0/10 from the organizer for failing the navigation task**, although the average of the judges' scores for those attempts remained above zero.
+
+**Kimi K3:** for S4-4, the model immediately identified the correct official Huawei store at One Avenue. The organizer chose to stop further paid search. The organizer's **10/10** reflects the demonstrated ability to locate the right store, **not delivery of a complete walking route**. A user-imposed cost stop is not treated as a model failure.
+
+**Separate GPT-6.1 Sol Ultra penalty: −2 out of 50 (−0.40/10).** The agent lost **10 h 54 min (654 min)** after prematurely assuming no SSH access existed, despite a working entry point being available in an adjacent session of the same agent. After a direct hint, it successfully used that access. The penalty measures **autonomous execution**, not the quality of the five answers: **9.05 → 8.65**.
+
+**Cost tracked separately:** GPT-6 Luna Pro cost **RUB 2.76 for all 5 tasks**; Kimi K3 cost **RUB 61.61 for the first 3**, with no verified five-task total. Cost, latency, and token consumption do not affect the quality score.
 
 ---
 
@@ -387,7 +434,7 @@ This is not a universal hierarchy of LLMs.
 
 The results apply only to:
 
-- the tasks in each series (10 in August, 5 in September);
+- the tasks in each series (10 in August, 5 in September, 5 in October);
 - the tested model versions;
 - the selected reasoning modes;
 - the state of the services at the time of testing.
@@ -399,6 +446,9 @@ The purpose of the project is to expose differences in engineering reasoning and
 ---
 
 ## Links
+
+**October 2026 — results**  
+[S4 — final scorecard](S4_итоги_октябрь_2026.html)
 
 **September 2026 — results**  
 https://dimadr.github.io/tests/llm_test_september_2026.html
@@ -413,6 +463,6 @@ https://github.com/dimadr/tests
 
 <div align="center">
 
-August–September 2026
+August–October 2026
 
 </div>
